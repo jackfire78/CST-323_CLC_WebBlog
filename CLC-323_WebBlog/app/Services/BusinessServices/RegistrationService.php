@@ -17,7 +17,7 @@ class RegistrationService{
     //create method takes user data inputed in registeration page and send information over to the DAO to add the user profile into the Database
     public function create(User $user){
         //Database Connection
-    	$conn = new mysqli("localhost", "root", "root", "323_webblog");
+    	$conn = new mysqli ( "lyn7gfxo996yjjco.cbetxkdyhwsb.us-east-1.rds.amazonaws.com", "u8f7vzzvkj9sn2oc", "ve7sgjbc7cj8mxvc", "f7dacmyrfygsdhw0" );
     	//make new user in database using user model
         $security = new RegistrationDAO($conn);
         $result = $security->findByUsername($user->getUsername());

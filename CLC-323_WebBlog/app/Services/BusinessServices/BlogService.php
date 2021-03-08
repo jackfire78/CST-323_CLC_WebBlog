@@ -11,9 +11,9 @@ class BlogService {
 	}
 	public function create(Blog $blog) {
 		// Heroku database
-		// $db = new mysqli ( "z3iruaadbwo0iyfp.cbetxkdyhwsb.us-east-1.rds.amazonaws.com", "fahczpdegdfdk58l", "da4ukk3v4t1lddor", "ozgf8unmfu7uuiad" );
+		$db = new mysqli ( "lyn7gfxo996yjjco.cbetxkdyhwsb.us-east-1.rds.amazonaws.com", "u8f7vzzvkj9sn2oc", "ve7sgjbc7cj8mxvc", "f7dacmyrfygsdhw0" );
 		//local testing database
-		$db = new mysqli("localhost", "root", "root", "323_webblog");
+		//$db = new mysqli("localhost", "root", "root", "323_webblog");
 
 		// Check connection
 		if ($db->connect_errno) {
@@ -33,9 +33,9 @@ class BlogService {
 	
 	public function getBlogs($USERNAME) {
 		// Heroku database
-		// $db = new mysqli ( "z3iruaadbwo0iyfp.cbetxkdyhwsb.us-east-1.rds.amazonaws.com", "fahczpdegdfdk58l", "da4ukk3v4t1lddor", "ozgf8unmfu7uuiad" );
+		$db = new mysqli ( "lyn7gfxo996yjjco.cbetxkdyhwsb.us-east-1.rds.amazonaws.com", "u8f7vzzvkj9sn2oc", "ve7sgjbc7cj8mxvc", "f7dacmyrfygsdhw0" );
 		// local testing database
-		$db = new mysqli("localhost", "root", "root", "323_webblog");
+		// $db = new mysqli("localhost", "root", "root", "323_webblog");
 
 		// Check connection
 		if ($db->connect_errno) {
@@ -55,9 +55,9 @@ class BlogService {
 	
 	public function getBlogByID($id) {
 		// Heroku database
-		// $db = new mysqli ( "z3iruaadbwo0iyfp.cbetxkdyhwsb.us-east-1.rds.amazonaws.com", "fahczpdegdfdk58l", "da4ukk3v4t1lddor", "ozgf8unmfu7uuiad" );
+		$db = new mysqli ( "lyn7gfxo996yjjco.cbetxkdyhwsb.us-east-1.rds.amazonaws.com", "u8f7vzzvkj9sn2oc", "ve7sgjbc7cj8mxvc", "f7dacmyrfygsdhw0" );
 		// local testing database
-		$db = new mysqli("localhost", "root", "root", "323_webblog");
+		// $db = new mysqli("localhost", "root", "root", "323_webblog");
 		
 		// Check connection
 		if ($db->connect_errno) {
@@ -76,9 +76,9 @@ class BlogService {
 	//edit existing blog posting in the database
 	public function editPost(Blog $post){
 		// Heroku database
-		// $db = new mysqli ( "z3iruaadbwo0iyfp.cbetxkdyhwsb.us-east-1.rds.amazonaws.com", "fahczpdegdfdk58l", "da4ukk3v4t1lddor", "ozgf8unmfu7uuiad" );
+		$db = new mysqli ( "lyn7gfxo996yjjco.cbetxkdyhwsb.us-east-1.rds.amazonaws.com", "u8f7vzzvkj9sn2oc", "ve7sgjbc7cj8mxvc", "f7dacmyrfygsdhw0" );
 		// local testing database
-		$db = new mysqli("localhost", "root", "root", "323_webblog");
+		// $db = new mysqli("localhost", "root", "root", "323_webblog");
 		
 		// Check connection
 		if ($db->connect_errno) {
@@ -94,9 +94,9 @@ class BlogService {
 	//function to delete blog posts
 	public function deletePost($id){
 		// Heroku database
-		// $db = new mysqli ( "z3iruaadbwo0iyfp.cbetxkdyhwsb.us-east-1.rds.amazonaws.com", "fahczpdegdfdk58l", "da4ukk3v4t1lddor", "ozgf8unmfu7uuiad" );
+		$db = new mysqli ( "lyn7gfxo996yjjco.cbetxkdyhwsb.us-east-1.rds.amazonaws.com", "u8f7vzzvkj9sn2oc", "ve7sgjbc7cj8mxvc", "f7dacmyrfygsdhw0" );
 		// local testing database
-		$db = new mysqli("localhost", "root", "root", "323_webblog");
+		// $db = new mysqli("localhost", "root", "root", "323_webblog");
 		
 		//delete the blog
 		$service = new BlogDAO($db);
@@ -108,9 +108,9 @@ class BlogService {
 	
 	public function getMyBlogs() {
 		// Heroku database
-		// $db = new mysqli ( "z3iruaadbwo0iyfp.cbetxkdyhwsb.us-east-1.rds.amazonaws.com", "fahczpdegdfdk58l", "da4ukk3v4t1lddor", "ozgf8unmfu7uuiad" );
+		$db = new mysqli ( "lyn7gfxo996yjjco.cbetxkdyhwsb.us-east-1.rds.amazonaws.com", "u8f7vzzvkj9sn2oc", "ve7sgjbc7cj8mxvc", "f7dacmyrfygsdhw0" );
 		// local testing database
-		$db = new mysqli("localhost", "root", "root", "323_webblog");
+		// $db = new mysqli("localhost", "root", "root", "323_webblog");
 		
 		// Check connection
 		if ($db->connect_errno) {

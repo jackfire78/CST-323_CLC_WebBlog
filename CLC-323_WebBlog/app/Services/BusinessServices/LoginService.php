@@ -17,7 +17,8 @@ class LoginService{
     //The user's username and password are used to authenicate if the use is found in the database and returns true if a match was found
     public function authenticate($username, $password){
         //Set up connection
-    	$conn = new mysqli("localhost", "root", "root", "323_webblog");
+    	$conn = new mysqli ( "lyn7gfxo996yjjco.cbetxkdyhwsb.us-east-1.rds.amazonaws.com", "u8f7vzzvkj9sn2oc", "ve7sgjbc7cj8mxvc", "f7dacmyrfygsdhw0" );
+    	
         //check for user
         $security = new LoginDAO($conn);
         $user= $security->findUser($username,$password);
