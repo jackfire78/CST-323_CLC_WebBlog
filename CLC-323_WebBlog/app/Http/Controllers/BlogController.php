@@ -8,10 +8,10 @@ use App\Http\Models\Blog;
 use App\Services\BusinessServices\BlogService;
 use App\Services\Utility\MyLogger;
 
-class BlogController extends Controller {
+class BlogController extends Controller {	
 	// function for adding new blog posts
-	public function addBlog(Request $request) {
-		MyLogger::info ( 'Entering addBlog() in Blog Controller' );
+	public function addBlog(Request $request) {		
+		MyLogger::info('Entering addBlog() in BlogController');
 
 		// get the posted Form Data
 		$userid = Session::get ( 'User' )->getId ();
@@ -28,13 +28,17 @@ class BlogController extends Controller {
 
 		// rendered failed or success view and pass $blog to it
 		if ($status) {
+			MyLogger::info('Exiting addBlog() in BlogController with success');
 			return view ( 'BlogAddSuccess' );
 		} else {
+			MyLogger::info('Exiting addBlog() in BlogController with failure');
 			return view ( 'BlogAddFailure' );
 		}
 	}
 	// functino to search all blog posts
 	public function searchBlogs(Request $request) {
+		MyLogger::info('Entering searchBlogs() in BlogController');
+		
 		// get the posted Form Data
 		$username = $request->input ( 'username' );
 
@@ -44,14 +48,19 @@ class BlogController extends Controller {
 
 		// rendered failed or success view
 		if ($blogs) {
+			MyLogger::info('Exiting searchBlogs() in BlogController with success');
+			
 			return view ( 'showBlogSearch' )->with ( "blogs", $blogs );
 		} else {
+			MyLogger::info('Exiting searchBlogs() in BlogController with failure');
 			return view ( 'BlogSearchFailure' );
 		}
 	}
 	
 	// function to get one post (mainly used for edit blog post)
 	public function getPost(Request $request) {
+		MyLogger::info('Entering getPost() in BlogController');
+		
 		// get the posted Form Data
 		$id = $request->input ('id');
 		
@@ -61,14 +70,18 @@ class BlogController extends Controller {
 		
 		// rendered failed or success view
 		if ($blog) {
+			MyLogger::info('Exiting getPost() in BlogController with success');
 			return view ('editBlogPost')->with ("blog", $blog);
 		}else{
+			MyLogger::info('Exiting getPost() in BlogController with failure');
 			return view ('editBlogFailure');
 		}
 	}
 	
 	//Function will update the information on selected blog posting
-	public function editPost(Request $request){			
+	public function editPost(Request $request){	
+		MyLogger::info('Entering editPost() in BlogController');
+	
 		//pull form data to make a change
 		//extract data to send to the service
 		$id = $request->input('id');
@@ -84,14 +97,18 @@ class BlogController extends Controller {
 		$result = $service->editPost($newPost);
 		
 		if($result == "true"){
+			MyLogger::info('Exiting editPost() in BlogController with success');
 			return $this->myBlogs();
 		}else{
+			MyLogger::info('Exiting editPost() in BlogController with failure');
 			return view('editBlogFailure');
 		}
 	}
 
 	// Function to delete a job posting
 	public function deletePost(Request $request) {
+		MyLogger::info('Entering deletePost() in BlogController');
+		
 		// get the id
 		$id = $request->input ( 'id' );
 		// create new service
@@ -99,10 +116,12 @@ class BlogController extends Controller {
 		// call the delete job post using the passed Id
 		$result = $service->deletePost ( $id );
 		if ($result) {
+			MyLogger::info('Exiting deletePost() in BlogController with success');
 			// if result is true then deletion worked. Take user back to myblogs page
 			//return view ( 'showHomePage' );
 			return $this->myBlogs();
 		} else {
+			MyLogger::info('Exiting deletePost() in BlogController with failure');
 			// otherwise take user to error page
 			return view ( 'blogDeleteError' );
 		}
@@ -110,14 +129,18 @@ class BlogController extends Controller {
 
 	// function to retrieve current logged in user's blog posts
 	public function myBlogs() {
+		MyLogger::info('Entering myBlogs() in BlogController');
+		
 		// create blog service and call getMyBlogs
 		$service = new BlogService ();
 		$blogs = $service->getMyBlogs ();
 
 		// rendered failed or success view
 		if ($blogs) {
+			MyLogger::info('Exiting myBlogs() in BlogController with success');
 			return view ( 'MyBlogs' )->with ( "blogs", $blogs );
 		} else {
+			MyLogger::info('Exiting myBlogs() in BlogController with failure');
 			return view ( 'MyBlogsFailed' );
 		}
 	}

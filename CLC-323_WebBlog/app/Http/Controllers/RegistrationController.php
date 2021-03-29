@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 /* Module provides all methods needed to authenticate/ create users, and return views when requested */
 use App\Http\Models\User;
 use App\Services\BusinessServices\RegistrationService;
+use App\Services\Utility\MyLogger;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use Exception;
@@ -15,39 +16,47 @@ class RegistrationController extends Controller{
      * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory
      */
     public function createUser(Request $request){
+    	MyLogger::info('Entering createUser() in RegistrationController');
+    	
         try{
-        //Validate Form Data
-        $this->validateForm($request);
-        //pull form data to make user
-        $firstName = $request->input('firstName');
-        $lastName = $request->input('lastName');
-        $username = $request->input('username');
-        $password = $request->input('password');
-        $age = $request->input('age');
-        $email = $request->input('email');
-        $address = $request->input('address');
-        $phoneNumber = $request->input('phoneNumber');
-        //create new user object
-        $newUser = new User(null, $username, $password, $firstName, $lastName, $age, $address, $email, $phoneNumber);
-        //pass the person object to the registeration service
-        $makeUser = new RegistrationService();
-        //result will return the output of create method within the registeration service
-        $result = $makeUser->create($newUser);
-        if($result){
-            //if result is true then take user to the register success view
-            return view('registerSuccess');
-        }
-        //if duplicate user was found then return user to register page with error 
-        elseif ($result == "duplicate"){
-            return view('showRegister')->with("error","Error");
-        }
-        //otherwise take user to register failur incase the register process failed to proceed
-        return view('registerFailure')->with("result",$result);   
-        }
-        catch(ValidationException $e1){
+	        //Validate Form Data
+	        $this->validateForm($request);
+	        //pull form data to make user
+	        $firstName = $request->input('firstName');
+	        $lastName = $request->input('lastName');
+	        $username = $request->input('username');
+	        $password = $request->input('password');
+	        $age = $request->input('age');
+	        $email = $request->input('email');
+	        $address = $request->input('address');
+	        $phoneNumber = $request->input('phoneNumber');
+	        //create new user object
+	        $newUser = new User(null, $username, $password, $firstName, $lastName, $age, $address, $email, $phoneNumber);
+	        //pass the person object to the registeration service
+	        $makeUser = new RegistrationService();
+	        //result will return the output of create method within the registeration service
+	        $result = $makeUser->create($newUser);
+	        
+	        if($result){
+	        	MyLogger::info('Exiting createUser() in RegistrationController with success');     	
+	            //if result is true then take user to the register success view
+	            return view('registerSuccess');
+	        }
+	        //if duplicate user was found then return user to register page with error 
+	        elseif ($result == "duplicate"){
+	        	MyLogger::info('Exiting createUser() in RegistrationController with duplicate user');
+	            return view('showRegister')->with("error","Error");
+	        }else{
+	        	MyLogger::info('Exiting createUser() in RegistrationController with failure');
+	        	//otherwise take user to register failur incase the register process failed to proceed
+	        	return view('registerFailure')->with("result",$result);
+	        }   
+        }catch(ValidationException $e1){
+        	MyLogger::info('Exiting createUser() in RegistrationController with validation exception');    	
             throw $e1;
         }
         catch(Exception $e2){
+        	MyLogger::info('Exiting createUser() in RegistrationController exception');       	
             //return view("systemException");
         }
     }

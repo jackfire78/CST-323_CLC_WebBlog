@@ -15,9 +15,12 @@ class MyLogger implements ILoggerService {
 		if (self::$logger == null)
 		{
 			self::$logger = new Logger('WebNotes');
-			$stream = new StreamHandler('./storage/logs/WebNotes.log', Logger::DEBUG);
-			$stream->setFormatter(new LineFormatter("%datetime% : %level_name% : %message% %context%\n", "g:iA n/j/Y"));
-			self::$logger->pushHandler($stream);
+			//$stream = new StreamHandler('./storage/logs/WebNotes.log', Logger::DEBUG);
+			//$stream->setFormatter(new LineFormatter("%datetime% : %level_name% : %message% %context%\n", "g:iA n/j/Y"));
+			//self::$logger->pushHandler($stream);
+			//Logging in Heroku
+			self::$logger->pushHandler(new StreamHandler('php://stdout', Logger::DEBUG));
+			
 		}
 		return self::$logger;
 	}
