@@ -14,9 +14,9 @@ class BlogService {
 		MyLogger::info('Entering create() in BlogService');
 		
 		// Heroku database
-		// $db = new mysqli ( "lyn7gfxo996yjjco.cbetxkdyhwsb.us-east-1.rds.amazonaws.com", "u8f7vzzvkj9sn2oc", "ve7sgjbc7cj8mxvc", "f7dacmyrfygsdhw0" );
+		$db = new mysqli ( "lyn7gfxo996yjjco.cbetxkdyhwsb.us-east-1.rds.amazonaws.com", "u8f7vzzvkj9sn2oc", "ve7sgjbc7cj8mxvc", "f7dacmyrfygsdhw0" );
 		//local testing database
-		$db = new mysqli("localhost", "root", "root", "323_webblog");
+		// $db = new mysqli("localhost", "root", "root", "323_webblog");
 
 		// Check connection
 		if ($db->connect_errno) {
@@ -41,9 +41,9 @@ class BlogService {
 		MyLogger::info('Entering getBlogs() in BlogService');
 		
 		// Heroku database
-		// $db = new mysqli ( "lyn7gfxo996yjjco.cbetxkdyhwsb.us-east-1.rds.amazonaws.com", "u8f7vzzvkj9sn2oc", "ve7sgjbc7cj8mxvc", "f7dacmyrfygsdhw0" );
+		$db = new mysqli ( "lyn7gfxo996yjjco.cbetxkdyhwsb.us-east-1.rds.amazonaws.com", "u8f7vzzvkj9sn2oc", "ve7sgjbc7cj8mxvc", "f7dacmyrfygsdhw0" );
 		// local testing database
-		$db = new mysqli("localhost", "root", "root", "323_webblog");
+		// $db = new mysqli("localhost", "root", "root", "323_webblog");
 
 		// Check connection
 		if ($db->connect_errno) {
@@ -68,9 +68,9 @@ class BlogService {
 		MyLogger::info('Entering getBlogByID() in BlogService');
 		
 		// Heroku database
-		// $db = new mysqli ( "lyn7gfxo996yjjco.cbetxkdyhwsb.us-east-1.rds.amazonaws.com", "u8f7vzzvkj9sn2oc", "ve7sgjbc7cj8mxvc", "f7dacmyrfygsdhw0" );
+		$db = new mysqli ( "lyn7gfxo996yjjco.cbetxkdyhwsb.us-east-1.rds.amazonaws.com", "u8f7vzzvkj9sn2oc", "ve7sgjbc7cj8mxvc", "f7dacmyrfygsdhw0" );
 		// local testing database
-		$db = new mysqli("localhost", "root", "root", "323_webblog");
+		// $db = new mysqli("localhost", "root", "root", "323_webblog");
 		
 		// Check connection
 		if ($db->connect_errno) {
@@ -95,9 +95,9 @@ class BlogService {
 		MyLogger::info('Entering editPost() in BlogService');
 		
 		// Heroku database
-		// $db = new mysqli ( "lyn7gfxo996yjjco.cbetxkdyhwsb.us-east-1.rds.amazonaws.com", "u8f7vzzvkj9sn2oc", "ve7sgjbc7cj8mxvc", "f7dacmyrfygsdhw0" );
+		$db = new mysqli ( "lyn7gfxo996yjjco.cbetxkdyhwsb.us-east-1.rds.amazonaws.com", "u8f7vzzvkj9sn2oc", "ve7sgjbc7cj8mxvc", "f7dacmyrfygsdhw0" );
 		// local testing database
-		$db = new mysqli("localhost", "root", "root", "323_webblog");
+		// $db = new mysqli("localhost", "root", "root", "323_webblog");
 		
 		// Check connection
 		if ($db->connect_errno) {
@@ -119,9 +119,9 @@ class BlogService {
 		MyLogger::info('Entering deletePost() in BlogService');
 		
 		// Heroku database
-		// $db = new mysqli ( "lyn7gfxo996yjjco.cbetxkdyhwsb.us-east-1.rds.amazonaws.com", "u8f7vzzvkj9sn2oc", "ve7sgjbc7cj8mxvc", "f7dacmyrfygsdhw0" );
+		$db = new mysqli ( "lyn7gfxo996yjjco.cbetxkdyhwsb.us-east-1.rds.amazonaws.com", "u8f7vzzvkj9sn2oc", "ve7sgjbc7cj8mxvc", "f7dacmyrfygsdhw0" );
 		// local testing database
-		$db = new mysqli("localhost", "root", "root", "323_webblog");
+		// $db = new mysqli("localhost", "root", "root", "323_webblog");
 		
 		//delete the blog
 		$service = new BlogDAO($db);
@@ -137,9 +137,9 @@ class BlogService {
 		MyLogger::info('Entering getMyBlogs() in BlogService');
 		
 		// Heroku database
-		// $db = new mysqli ( "lyn7gfxo996yjjco.cbetxkdyhwsb.us-east-1.rds.amazonaws.com", "u8f7vzzvkj9sn2oc", "ve7sgjbc7cj8mxvc", "f7dacmyrfygsdhw0" );
+		$db = new mysqli ( "lyn7gfxo996yjjco.cbetxkdyhwsb.us-east-1.rds.amazonaws.com", "u8f7vzzvkj9sn2oc", "ve7sgjbc7cj8mxvc", "f7dacmyrfygsdhw0" );
 		// local testing database
-		$db = new mysqli("localhost", "root", "root", "323_webblog");
+		// $db = new mysqli("localhost", "root", "root", "323_webblog");
 		
 		// Check connection
 		if ($db->connect_errno) {
