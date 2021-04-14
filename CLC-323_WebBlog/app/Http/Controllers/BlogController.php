@@ -46,9 +46,7 @@ class BlogController extends Controller {
 	// functino to search all blog posts
 	public function searchBlogs(Request $request) {
 		MyLogger::info('Entering searchBlogs() in BlogController');
-		
-		$this->validateSearchForm($request);
-		
+				
 		// get the posted Form Data
 		$username = $request->input ( 'username' );
 
@@ -155,16 +153,6 @@ class BlogController extends Controller {
 			MyLogger::info('Exiting myBlogs() in BlogController with failure');
 			return view ( 'MyBlogsFailed' );
 		}
-	}
-		
-	/**
-	 * Validate search form
-	 * @param Request $request
-	 */
-	private function validateSearchForm(Request $request){
-		$rules = ['username' => 'Required'];	
-		//run data validation rules
-		$this->validate($request, $rules);
 	}
 	
 	/**
