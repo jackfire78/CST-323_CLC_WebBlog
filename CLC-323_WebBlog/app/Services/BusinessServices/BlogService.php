@@ -6,10 +6,21 @@ use App\Services\DataService\BlogDAO;
 use App\Services\Utility\MyLogger;
 use Illuminate\Support\Facades\Session;
 use mysqli;
-
+/**
+ * @author Jack Setrak
+ * Milestone 5 (4-14-2021)
+ * Blog service class to handle data sent from controller. Creates connection to database and passes that to a new
+ * instance of a DAO
+ * Contributions: Jack Setrak
+ */
 class BlogService {
 	public function __construct() {
 	}
+	/**
+	 * Method used to create a new blog. Send blog data to DAO
+	 * @param Blog $blog
+	 * @return boolean
+	 */
 	public function create(Blog $blog) {
 		MyLogger::info('Entering create() in BlogService');
 		
@@ -36,7 +47,11 @@ class BlogService {
 		// return results
 		return $flag;
 	}
-	
+	/**
+	 * Method used to get all blogs. Sends username to DAO
+	 * @param  $USERNAME
+	 * @return array|\App\Http\Models\Blog
+	 */
 	public function getBlogs($USERNAME) {
 		MyLogger::info('Entering getBlogs() in BlogService');
 		
@@ -63,7 +78,11 @@ class BlogService {
 		// return results
 		return $blogs;
 	}
-	
+	/**
+	 * Method used to get a specific blog. Used for editing a blog. 
+	 * @param  $id
+	 * @return \App\Http\Models\Blog
+	 */
 	public function getBlogByID($id) {
 		MyLogger::info('Entering getBlogByID() in BlogService');
 		
@@ -132,7 +151,10 @@ class BlogService {
 		MyLogger::info('Exiting deletePost() in BlogService with result');
 		return $result;
 	}
-	
+	/**
+	 * Method used to get all current logged in users' blogs. 
+	 * @return array|\App\Http\Models\Blog
+	 */
 	public function getMyBlogs() {
 		MyLogger::info('Entering getMyBlogs() in BlogService');
 		

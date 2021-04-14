@@ -7,12 +7,20 @@ use Illuminate\Support\Facades\Session;
 use App\Http\Models\Blog;
 use App\Services\BusinessServices\BlogService;
 use App\Services\Utility\MyLogger;
-
+/**
+ * @author Jack Setrak
+ * Milestone 5 (4-14-2021)
+ * Controller that deals with all Blog related methods. Handles all form requests and validation before
+ * sending information down to Business service.
+ * Contributions: Jack Setrak
+ */
 class BlogController extends Controller {	
 	// function for adding new blog posts
 	public function addBlog(Request $request) {		
 		MyLogger::info('Entering addBlog() in BlogController');
-
+		
+		$this->validateForm($request);
+		
 		// get the posted Form Data
 		$userid = Session::get ( 'User' )->getId ();
 		$username = $request->input ( 'username' );
@@ -39,6 +47,8 @@ class BlogController extends Controller {
 	public function searchBlogs(Request $request) {
 		MyLogger::info('Entering searchBlogs() in BlogController');
 		
+		$this->validateForm($request);
+		
 		// get the posted Form Data
 		$username = $request->input ( 'username' );
 
@@ -61,6 +71,8 @@ class BlogController extends Controller {
 	public function getPost(Request $request) {
 		MyLogger::info('Entering getPost() in BlogController');
 		
+		$this->validateForm($request);
+		
 		// get the posted Form Data
 		$id = $request->input ('id');
 		
@@ -82,6 +94,8 @@ class BlogController extends Controller {
 	public function editPost(Request $request){	
 		MyLogger::info('Entering editPost() in BlogController');
 	
+		$this->validateForm($request);
+		
 		//pull form data to make a change
 		//extract data to send to the service
 		$id = $request->input('id');
@@ -109,6 +123,8 @@ class BlogController extends Controller {
 	public function deletePost(Request $request) {
 		MyLogger::info('Entering deletePost() in BlogController');
 		
+		$this->validateForm($request);
+		
 		// get the id
 		$id = $request->input ( 'id' );
 		// create new service
@@ -130,7 +146,7 @@ class BlogController extends Controller {
 	// function to retrieve current logged in user's blog posts
 	public function myBlogs() {
 		MyLogger::info('Entering myBlogs() in BlogController');
-		
+				
 		// create blog service and call getMyBlogs
 		$service = new BlogService ();
 		$blogs = $service->getMyBlogs ();
@@ -144,4 +160,42 @@ class BlogController extends Controller {
 			return view ( 'MyBlogsFailed' );
 		}
 	}
+		
+	/**
+	 * Validate search form
+	 * @param Request $request
+	 */
+	private function validateSearchForm(Request $request){
+		$rules = ['username' => 'Required'];	
+		//run data validation rules
+		$this->validate($request, $rules);
+	}
+	
+	/**
+	 * Validate submit form
+	 * @param Request $request
+	 */
+	private function validateSubmitForm(Request $request){
+		$rules = ['username' => 'Required',
+				'blogTitle' => 'Required',
+				'blogContent' => 'Required'];
+		
+		//run data validation rules
+		$this->validate($request, $rules);
+	}
+	/**
+	 * Validate edit form
+	 * @param Request $request
+	 */
+	private function validateEditForm(Request $request){
+		$rules = ['username' => 'Required',
+				'blogTitle' => 'Required',
+				'blogContent' => 'Required'];
+		
+		//run data validation rules
+		$this->validate($request, $rules);
+	}
+	
+	
+	
 }

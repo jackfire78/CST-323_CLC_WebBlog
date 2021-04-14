@@ -6,7 +6,14 @@ use PDOException;
 use App\Http\Models\Blog;
 use App\Services\Utility\DatabaseException;
 use App\Services\Utility\MyLogger;
-
+/**
+ * @author Jack Setrak
+ * Milestone 5 (4-14-2021)
+ * Data service classs to handle all database logic. Takes information passed from Business service and 
+ * correctly goes through the proper CRUD methods. Pass, Fail, or Exception get handled in the end.
+ * Create, find, edit, or delete a blog.
+ * Contributions: Jack Setrak
+ */
 class BlogDAO { 
 	private $db;
 	
@@ -14,6 +21,12 @@ class BlogDAO {
 		$this->db = $db;
 	}
 	
+	/**
+	 * Method used to create a blog. Saves blog data to database then returns pass, fail, or exception
+	 * @param Blog $blog
+	 * @throws DatabaseException
+	 * @return boolean
+	 */
 	public function createBlog(Blog $blog) {
 		MyLogger::info('Entering createBlog() in BlogDAO');
 		
@@ -125,7 +138,7 @@ class BlogDAO {
 			}
 		}	
 	}
-	
+	//Method used to delete a blog based off blog id given
 	public function delete($id){
 		MyLogger::info('Entering delete() in BlogDAO');
 		

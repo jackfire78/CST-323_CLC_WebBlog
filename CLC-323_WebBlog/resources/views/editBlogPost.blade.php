@@ -28,6 +28,12 @@
 	    <hr>
 	    <button type="submit" class="btn btn-primary">Confirm Edit</button>
 	</form>
+	@if($errors->count() != 0)
+      	<h5 align="center">List of Errors</h5>
+	@foreach($errors->all() as $message)
+		<p align="center">{{ $message }} </p><br>
+	@endforeach
+	@endif
   </div>
   </div>
   </div>

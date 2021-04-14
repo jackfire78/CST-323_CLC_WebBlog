@@ -2,8 +2,15 @@
 namespace App\Services\DataService;
 use App\Http\Models\User;
 use App\Services\Utility\MyLogger;
-
 //securityDAO class that creates or findes user depending on which method is requested from SecurityService
+/**
+ * @author Jack Setrak
+ * Milestone 5 (4-14-2021)
+ * Data service classs to handle all database logic. Takes information passed from Business service and 
+ * correctly goes through the proper CRUD methods. Pass, Fail, or Exception get handled in the end.
+ * Registers a new user account. 
+ * Contributions: Jack Setrak
+ */
 class RegistrationDAO{
     
     private $conn;

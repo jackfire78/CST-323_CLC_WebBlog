@@ -5,8 +5,13 @@ namespace App\Services\BusinessServices;
 use mysqli;
 use App\Services\DataService\LoginDAO;
 use App\Services\Utility\MyLogger;
-
-//securityService class recieves the sent data from Logincontroller and calls the appropriate method in DAO to access the database
+/**
+ * @author Jack Setrak
+ * Milestone 5 (4-14-2021)
+ * Login service class to handle data sent from controller. Creates connection to database and passes that to a new
+ * instance of a DAO
+ * Contributions: Jack Setrak
+ */
 class LoginService{
     private $servername;
     private $username;

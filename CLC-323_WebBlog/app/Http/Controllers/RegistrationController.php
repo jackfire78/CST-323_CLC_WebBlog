@@ -1,14 +1,19 @@
 <?php
 namespace App\Http\Controllers;
 
-/* Module provides all methods needed to authenticate/ create users, and return views when requested */
 use App\Http\Models\User;
 use App\Services\BusinessServices\RegistrationService;
 use App\Services\Utility\MyLogger;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use Exception;
-//controller hold basic methods to either route to other views or request securityservice for further user specific actions
+/**
+ * @author Jack Setrak
+ * Milestone 5 (4-14-2021)
+ * Controller that deals with all Registeration related methods. Handles all form requests and validation before
+ * sending information down to Business service.
+ * Contributions: Jack Setrak
+ */
 class RegistrationController extends Controller{
     /**
      * Function that will create user with the form data they filled out

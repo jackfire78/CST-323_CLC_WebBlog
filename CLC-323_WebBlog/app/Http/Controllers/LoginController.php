@@ -7,8 +7,13 @@ use Illuminate\Validation\ValidationException;
 use Exception;
 use App\Services\BusinessServices\LoginService;
 use App\Services\Utility\MyLogger;
-
-//controller hold basic methods to either route to other views or request securityservice for further user specific actions
+/**
+ * @author Jack Setrak
+ * Milestone 5 (4-14-2021)
+ * Controller that deals with all Login/Logout related methods. Handles all form requests and validation before
+ * sending information down to Business service.
+ * Contributions: Jack Setrak
+ */
 class LoginController extends Controller{
     public function __construct(){
     }

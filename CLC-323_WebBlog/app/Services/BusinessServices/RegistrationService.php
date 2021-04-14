@@ -5,7 +5,13 @@ use App\Http\Models\User;
 use App\Services\DataService\RegistrationDAO;
 use App\Services\Utility\MyLogger;
 use mysqli;
-/* Business Service rules for registrations, connects to Registration DAO */
+/**
+ * @author Jack Setrak
+ * Milestone 5 (4-14-2021)
+ * Register service class to handle data sent from controller. Creates connection to database and passes that to a new
+ * instance of a DAO
+ * Contributions: Jack Setrak
+ */
 class RegistrationService{
     //Method to add a new user
     private $servername;
