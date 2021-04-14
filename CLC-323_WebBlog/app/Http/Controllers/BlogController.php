@@ -19,7 +19,7 @@ class BlogController extends Controller {
 	public function addBlog(Request $request) {		
 		MyLogger::info('Entering addBlog() in BlogController');
 		
-		$this->validateForm($request);
+		$this->validateSubmitForm($request);
 		
 		// get the posted Form Data
 		$userid = Session::get ( 'User' )->getId ();
@@ -47,7 +47,7 @@ class BlogController extends Controller {
 	public function searchBlogs(Request $request) {
 		MyLogger::info('Entering searchBlogs() in BlogController');
 		
-		$this->validateForm($request);
+		$this->validateSearchForm($request);
 		
 		// get the posted Form Data
 		$username = $request->input ( 'username' );
@@ -70,9 +70,7 @@ class BlogController extends Controller {
 	// function to get one post (mainly used for edit blog post)
 	public function getPost(Request $request) {
 		MyLogger::info('Entering getPost() in BlogController');
-		
-		$this->validateForm($request);
-		
+				
 		// get the posted Form Data
 		$id = $request->input ('id');
 		
@@ -94,7 +92,7 @@ class BlogController extends Controller {
 	public function editPost(Request $request){	
 		MyLogger::info('Entering editPost() in BlogController');
 	
-		$this->validateForm($request);
+		$this->validateEditForm($request);
 		
 		//pull form data to make a change
 		//extract data to send to the service
@@ -122,9 +120,7 @@ class BlogController extends Controller {
 	// Function to delete a job posting
 	public function deletePost(Request $request) {
 		MyLogger::info('Entering deletePost() in BlogController');
-		
-		$this->validateForm($request);
-		
+				
 		// get the id
 		$id = $request->input ( 'id' );
 		// create new service
